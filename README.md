@@ -17,3 +17,10 @@ This project includes two main components: a Python script for organizing files 
 ## Usage
 - To run the file organization script manually: `python organize.py`
 - To install and start the Windows service: `python fileorgwinservice.py install` and `python fileorgwinservice.py start`
+
+
+## For futher documentation please refer here
+- [File Organization Windows Service Documentation](docs/fileorgwinservice.md)
+- [File Organization Python Script Documentation](docs/organize.md)
+
+You can reachout to me via ***email:dantelph@gmail.com***
