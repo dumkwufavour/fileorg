@@ -1,0 +1,16 @@
+{
+    "categories": {
+        "Documents": [".pdf", ".docx", ".doc", ".txt", ".csv", ".xlsx"],
+        "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".jfif", ".ico"],
+        "Videos": [".mp4", ".avi", ".mkv", ".mov"],
+        "Music": [".mp3", ".wav", ".flac"],
+        "Code": [".py", ".html", ".js", ".css", ".json"],
+        "software":[".exe"],
+        "compressed":[".zip"]
+    },
+    "date_based": false,
+    "backup_enabled": true,
+    "dry_run": false,
+    "verbose": true,
+    "overwrite_files": false
+}
