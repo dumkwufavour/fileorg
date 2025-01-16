@@ -5,7 +5,7 @@
         "Videos": [".mp4", ".avi", ".mkv", ".mov"],
         "Music": [".mp3", ".wav", ".flac"],
         "Code": [".py", ".html", ".js", ".css", ".json"],
-        "software":[".exe"],
+        "software":[".exe", ".msi", ".ini"],
         "compressed":[".zip"]
     },
     "date_based": false,
