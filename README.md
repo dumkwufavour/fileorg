@@ -1,3 +1,5 @@
+# Please note this README file is still in development due to the service script, refer to the [File Organization Python Script Documentation](docs/organize.md) for uptodate features avoid running the service script if you are unclear about it inorder to avoid issues/conflicts with your machine, if you're an expert and can fix it please go ahead and use it.
+
 # File Organization Project
 
 ## Overview
