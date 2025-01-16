@@ -2,105 +2,100 @@
 
 ## Overview
 
-The `organize.py` script organizes files in a specified directory based on configuration settings. It supports categorizing files, backing up files, handling duplicate file names, and optionally running in a dry run mode. The script can also be scheduled to run at regular intervals.
+The `organize.py` script automates file organization by categorizing files in a directory based on their extensions. It supports backing up files, resolving duplicate names, and providing a preview mode for planned actions. Additionally, it can be scheduled to run automatically at specified intervals. The script is fully cross-platform and works seamlessly on Windows, macOS, and Linux.
 
 ## Features
 
-- Organizes files into categories based on their extensions.
-- Optionally backs up files before moving them.
-- Handles duplicate file names by renaming.
-- Supports dry run mode to preview actions without making changes.
-- Allows scheduling of file organization tasks.
-- Logs activities to a log file and a CSV file.
+- Cross-platform support for Windows, macOS, and Linux.
+- Categorizes files based on their extensions using customizable rules.
+- Creates backups of files before organizing them (optional).
+- Renames files to avoid overwriting duplicates.
+- Supports a dry run mode to preview actions without making changes.
+- Multi-threaded file organization for improved performance.
+- Logs activities to both a log file and a CSV file.
+- Configurable scheduling to automate file organization tasks.
 
 ## Setup Instructions
 
-1. **Install Python and Required Packages**:
-   - Ensure Python is installed on your system.
-   - Install the `python-dotenv` and `schedule` packages using pip:
-     ```bash
-     pip install python-dotenv schedule
-     ```
+### 1. Install Python and Required Packages
+Ensure Python is installed, and then install the required libraries:
+```bash
+pip install python-dotenv schedule
+```
 
-2. **Create and Configure `.env` File**:
-   - Create a `.env` file in the same directory as `organize.py`.
-   - Add the following environment variables to the `.env` file:
-     ```env
-     CONFIG_PATH=C:/path/to/your/config.json
-     SOURCE_DIR=C:/path/to/source/directory
-     BASE_DEST_DIR=C:/path/to/destination/directory
-     LOG_CSV=C:/path/to/your/log.csv
-     ```
+### 2. Create and Configure `.env` File
+Create a `.env` file in the script's directory with the following environment variables:
+```env
+CONFIG_PATH=/path/to/config.json
+SOURCE_DIR=/path/to/source/directory
+BASE_DEST_DIR=/path/to/destination/directory
+LOG_CSV=/path/to/log.csv
+SCHEDULE_TIME=12:03
+```
+- Replace paths with your specific file locations.
+- Use forward slashes (`/`) for compatibility across platforms.
+- Adjust `SCHEDULE_TIME` (in 24-hour format) for the scheduling feature.
 
-3. **Create and Configure `config.json`**:
-   - Create a `config.json` file in the path specified by `CONFIG_PATH`.
-   - Add the following configuration settings:
-     ```json
-     {
-       "categories": {
-         "Category1": [".ext1", ".ext2"],
-         "Category2": [".ext3"]
-       },
-       "date_based": false,
-       "backup_enabled": true,
-       "dry_run": false,
-       "verbose": true,
-       "overwrite_files": false
-     }
-     ```
-   - Replace the values with your specific configuration for file categories and behavior.
+### 3. Create and Configure `config.json`
+Create a `config.json` file at the location specified by `CONFIG_PATH`. Use the following template:
+```json
+{
+  "categories": {
+    "Documents": [".pdf", ".docx", ".txt"],
+    "Images": [".jpg", ".png", ".gif"],
+    "Videos": [".mp4", ".mkv"]
+  },
+  "date_based": true,
+  "backup_enabled": true,
+  "dry_run": false,
+  "verbose": true,
+  "overwrite_files": false
+}
+```
+- Customize the categories and file extensions.
+- Adjust the other configuration settings as needed.
 
-4. **Run the Script**:
-   - You can run the script manually using the following command:
-     ```bash
-     python organize.py
-     ```
+### 4. Run the Script
+Run the script manually using:
+```bash
+python organize.py
+```
 
 ## Usage
 
-- **Organize Files**:
-  - The script will organize files from the `SOURCE_DIR` into categories defined in `config.json` and place them in the `BASE_DEST_DIR`.
+### Organize Files
+The script organizes files from `SOURCE_DIR` into categories defined in `config.json` and places them in `BASE_DEST_DIR`. If `date_based` is enabled, files are further organized into subdirectories by modification date.
 
-- **Backup Files**:
-  - If `backup_enabled` is set to `true` in `config.json`, the script will back up files before moving them.
+### Backup Files
+If `backup_enabled` is set to `true`, files are backed up to a `backup` directory inside `BASE_DEST_DIR` before being moved.
 
-- **Dry Run**:
-  - If `dry_run` is set to `true`, the script will only print the actions it would take without making any changes.
+### Dry Run Mode
+If `dry_run` is `true`, the script only previews its actions without making changes.
 
-- **Verbose Mode**:
-  - If `verbose` is set to `true`, the script will print additional information about its operations to the console.
+### Verbose Mode
+If `verbose` is `true`, detailed information about operations is displayed in the console.
 
-- **Handle Duplicates**:
-  - If a file with the same name already exists in the destination directory and `overwrite_files` is set to `false`, the script will rename the file to avoid overwriting.
+### Handling Duplicates
+If `overwrite_files` is `false`, duplicate files are renamed with a counter (e.g., `file(1).txt`).
 
-- **Scheduling**:
-  - The script can be scheduled to run at regular intervals using the `schedule` library. The default configuration schedules the script to run daily at 12:03 PM. To change the schedule, modify the `schedule.every().day.at("12:03").do(task)` line in the `schedule_organization` function.
+### Scheduling
+To automate organization tasks:
+1. Uncomment the scheduling section in the script.
+2. The script will run daily at the time specified by `SCHEDULE_TIME`.
 
 ## Logging
 
-- **Log File**:
-  - The script logs its activities to `organizer.log`, including details of file movements and backups.
-
-- **CSV Log**:
-  - The script also logs activities to a CSV file specified by `LOG_CSV`. The CSV file includes timestamps, descriptions, and operations.
+- **Log File**: Logs detailed activity in `organizer.log`.
+- **CSV Log**: Logs activity in a CSV file specified by `LOG_CSV`, including timestamps, descriptions, and actions.
 
 ## Error Handling
 
-- **Missing Environment Variables**:
-  - The script will raise a `ValueError` if any required environment variables are missing. Ensure that the `.env` file is correctly configured.
-
-- **Configuration File Issues**:
-  - The script will exit with an error message if the `config.json` file is not found or contains invalid JSON.
-
-- **Directory Issues**:
-  - The script will exit with an error message if the source or destination directories do not exist.
+- **Missing Environment Variables**: The script raises a `ValueError` if required variables are missing.
+- **Invalid Configurations**: The script exits with an error if `config.json` is not found or contains invalid JSON.
+- **Directory Errors**: If the source or destination directories are missing, the script exits with an error message.
 
 ## Troubleshooting
 
-- **Script Not Running**:
-  - Verify that all environment variables in the `.env` file are correctly set.
-  - Ensure that the `config.json` file exists and is properly formatted.
-  - Check the log file and CSV file for any errors or warnings.
-
-- **File Organization Issues**:
-  - Review the `organizer.log` and `LOG_CSV` files for detailed information on any issues encountered during file organization.
+- **Script Not Running**: Ensure the `.env` and `config.json` files are properly set up and paths are valid.
+- **Organization Issues**: Check `organizer.log` and `LOG_CSV` for details about any problems.
+- **Backup Redundancy**: The script skips redundant backups by comparing file checksums.
