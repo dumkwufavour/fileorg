@@ -24,4 +24,4 @@ A clear and concise description of what the bug is.
 - Python version: [e.g. 3.13]
 - Dependencies used: [if known]
 
-## 🗒️ Additional Context
+## 🗒️ Additional Context Would Help
