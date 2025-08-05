@@ -1,11 +1,7 @@
-```markdown
-
-````md
 # Contributing to fileorg
 
 🎉 Thank you for considering contributing! Your help improves the project for everyone.
 
----
 
 ## 🧰 Getting Started
 
@@ -13,12 +9,11 @@
 
 Fork the repo and clone your fork:
 
-```
+```md
 git clone https://github.com/dumkwufavour/fileorg.git
 cd fileorg
 ````
 
----
 
 ## 🔧 Set Up Your Local Environment
 
@@ -33,7 +28,7 @@ source venv/bin/activate      # On Windows: venv\Scripts\activate
 
 If using `requirements.txt`:
 
-```bash
+```md
 pip install -r requirements.txt
 ```
 
@@ -43,13 +38,12 @@ Or if using `poetry`:
 poetry install
 ```
 
----
 
 ## 🧪 Running the Project / Tests
 
 ### To Run the App (if applicable)
 
-```bash
+```
 python main.py
 ```
 
@@ -61,7 +55,6 @@ We use `pytest` for testing.
 pytest
 ```
 
----
 
 ## ✨ Code Style & Linting
 
@@ -79,7 +72,6 @@ isort .
 flake8
 ```
 
----
 
 ## 💬 Commit Conventions
 
@@ -91,7 +83,7 @@ Examples:
 * `fix: resolve crash when input is null`
 * `docs: update README with usage examples`
 
----
+
 
 ## 🚀 Submitting a Contribution
 
@@ -117,13 +109,9 @@ git push origin feature/your-feature-name
 
 We’re committed to a respectful, welcoming community. Please read our [CODE\_OF\_CONDUCT.md](./CODE_OF_CONDUCT.md).
 
----
 
 ## 🆘 Need Help?
 
-Open an [issue](https://github.com/your-username/project-name/issues) and we’ll be glad to assist you.
+Open an [issue](https://github.com/dumkwufavour/fileorg/issues) and we’ll be glad to assist you.
 
 Happy coding! 🚀🐍
-
-```
----
