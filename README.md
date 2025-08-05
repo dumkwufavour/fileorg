@@ -28,7 +28,7 @@ Ensure Python is installed and available in your system’s PATH.
 
 ### 2. Install Dependencies
 
-```bash
+```
 pip install -r requirements.txt
 ```
 ````
@@ -44,13 +44,13 @@ pip install -r requirements.txt
 
 ### Run Script Manually
 
-```bash
+```
 python organize.py
 ```
 
 ### Install and Start Windows Service
 
-```bash
+```
 python fileorgwinservice.py install
 python fileorgwinservice.py start
 ```
