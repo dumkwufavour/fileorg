@@ -25,4 +25,4 @@ This project includes two main components: a Python script for organizing files 
 - [File Organization Windows Service Documentation](docs/fileorgwinservice.md)
 - [File Organization Python Script Documentation](docs/organize.md)
 
-You can reachout to me via ***email:dantelph@gmail.com***
+You can reachout to me via ***email:favourson71@gmail.com***
